@@ -1,8 +1,7 @@
 import { ProductService } from './product.service';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CommonModule } from "@angular/common";
+import { SharedModule } from "../shared/shared.module";
 
 import { StarComponent } from './../shared/star.component';
 import { ProductFilterPipe } from './product-list.pipe';
@@ -14,12 +13,10 @@ import { ProductDetailsGuard } from "./product-guard.service";
     declarations: [
         ProductListComponent,
         ProductDetailComponent,
-        ProductFilterPipe,
-        StarComponent
+        ProductFilterPipe
     ],
     imports: [
-        FormsModule,
-        CommonModule,
+        SharedModule,
         RouterModule.forChild([
             { path: 'products', component: ProductListComponent },
             { path: 'product/:id', 
