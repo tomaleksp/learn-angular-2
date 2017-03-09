@@ -52,12 +52,5 @@
     "official angular 2 seed",
     "official angular2 seed"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/angular/angular2-seed.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angular/angular2-seed/issues"
-  },
-  "homepage": "https://github.com/angular/angular2-seed#readme"
+  "repository": {}
 }

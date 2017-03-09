@@ -1,2 +1,7 @@
-<h3>Home Component</h3>
-<p>Welcome to Angular Seed</p>
+<h3>Angular 2 Forms</h3>
+<form #form="ngForm" novalidate>
+    <input type="text" required placeholder="Name" name="name" ngModel>
+    <button type="submit">Ok</button>
+</form>
+
+{{ form.pristine }}
