@@ -47,7 +47,11 @@
                 </option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Ok</button>
+        
+        <button type="submit" class="btn btn-primary" type="submit"
+        [disabled]="form.invalid">Ok</button>
+
+        <h3>{{ form.pristine }}</h3>
     </form>
     <!--Model: {{ model | json}}
     <br/> Angular: {{ form.value | json }}-->
