@@ -8,5 +8,13 @@ import { Employee } from "../models/employee.model";
 })
 export class HomeComponent {
   languages = ["English", "Spanish", "Other"];
-  model = new Employee('Darla', 'Smith', true, 'W2', 'English');
+  model = new Employee('', 'Smith', true, 'W2', 'default');
+  hasPrimaryLanguageError = false;
+
+  valdatePrimaryLanguage(value){
+    if (value === 'default')
+      this.hasPrimaryLanguageError = true;
+    else
+      this.hasPrimaryLanguageError = false;
+  }
 }
