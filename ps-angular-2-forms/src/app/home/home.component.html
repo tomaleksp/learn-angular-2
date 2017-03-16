@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="languages.length == 0">Loading :-)</div>
+<div class="container" *ngIf="languages.length > 0">
     <h3>Employee Forms</h3>
-    <form #form="ngForm" novalidate>
+    <form #form="ngForm" (submit)="submitForm(form)" novalidate>
         <div class="form-group" [class.has-error]="firstName.invalid && firstName.dirty">
             <label class="control-label" for="firstNameId">First Name</label>
             <input #firstName="ngModel" pattern="^Q" type="text" class="form-control" required name="firstName" [(ngModel)]="model.firstName">
