@@ -15,7 +15,7 @@ import { RepoDetailComponent } from './github/repo-detail/repo-detail.component'
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { FormPoster } from './services/form-poster.service';
-import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap'
+import { DatepickerModule, DatepickerConfig } from 'ng2-bootstrap/ng2-bootstrap'
 
 @NgModule({
   declarations: [
@@ -32,12 +32,13 @@ import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap'
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: true }),
-    DatepickerModule
+    DatepickerModule,
+    RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
     GithubService,
-    FormPoster
+    FormPoster,
+    DatepickerConfig
   ],
   bootstrap: [ AppComponent ]
 })
