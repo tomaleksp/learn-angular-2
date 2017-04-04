@@ -15,6 +15,9 @@ export class WorkoutRunnerComponent implements OnInit {
     currentExercise: ExercisePlan;
     exerciseRunningDuration: number;
 
+    // test1: number = 0;
+    // test2: number = 0;
+
     constructor() {
         this.workoutPlan = this.buildWorkout();
         this.restExercise = new ExercisePlan(
@@ -24,7 +27,20 @@ export class WorkoutRunnerComponent implements OnInit {
 
     ngOnInit() {
         this.start();
+        // this.startT1();
+        // this.startT2();
     }
+
+    // startT1(){
+    //     setInterval(() => {
+    //         this.test1 += 1;
+    //     }, 2000);
+    // }
+    // startT2(){
+    //     setInterval(() => {
+    //         this.test2 += 1;
+    //     }, 5000);
+    // }
 
     start() {
         this.workoutTimeRemaining =
