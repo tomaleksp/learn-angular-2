@@ -4,7 +4,10 @@ import { Component, OnInit } from '@angular/core';
     moduleId: module.id,
     selector: 'events-app',
     //templateUrl: 'name.component.html'
-    template: 'Hello'
+    template: `
+        <nav-bar></nav-bar>
+        <events-list></events-list>
+    `
 })
 
 export class EventsAppComponent implements OnInit {
