@@ -6,9 +6,7 @@ import { ToastrService } from "../common/toastr.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'events-list',
-    //templateUrl: 'events-list.component.html'
-     template: `
+    template: `
      <div>
          <h1>Upcoming Angular 2 Events</h1>
          <hr/>
@@ -27,9 +25,9 @@ export class EventsListComponent implements OnInit {
 
     ngOnInit() {
         this.events = this.eventService.getEvents();
-     }
+    }
 
-     handleThumbnailClick(eventName: string){
-         this.toastr.success(eventName);
-     }
+    handleThumbnailClick(eventName: string) {
+        this.toastr.success(eventName);
+    }
 }
