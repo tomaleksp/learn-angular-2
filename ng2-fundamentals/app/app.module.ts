@@ -20,6 +20,7 @@ import { NavBarComponent } from "./nav/navbar.component";
 import { ToastrService } from "./common/toastr.service";
 import { appRoutes } from './routes';
 import { Error404Component } from "./errors/404.component";
+import { CreateSessionComponent } from "./events/event-details/create-session.component";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { Error404Component } from "./errors/404.component";
         NavBarComponent,
         EventDetailsComponent,
         CreateEventComponent,
-        Error404Component
+        Error404Component,
+        CreateSessionComponent
         ],
     providers: [
         EventService, ToastrService, EventListResolver, EventRouteActivator,
