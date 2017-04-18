@@ -13,7 +13,8 @@ import {
     CreateEventComponent,
     EventListResolver,
     EventRouteActivator,
-    SessionListComponent
+    SessionListComponent,
+    DurationPipe
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -42,7 +43,8 @@ import { CreateSessionComponent } from "./events/event-details/create-session.co
         Error404Component,
         CreateSessionComponent,
         SessionListComponent,
-        CollapsibleWellComponent
+        CollapsibleWellComponent,
+        DurationPipe
         ],
     providers: [
         EventService, ToastrService, EventListResolver, EventRouteActivator,
