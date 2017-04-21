@@ -1,38 +1,36 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { AuthService } from './user/auth.service';
-
+import { EventsAppComponent } from './events-app.component'
 import {
+    EventService,
     EventsListComponent,
     EventThumbnailComponent,
-    EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventListResolver,
     EventRouteActivator,
+    EventListResolver,
+    CreateSessionComponent,
     SessionListComponent,
     DurationPipe
 } from './events/index'
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
+import { CollapsibleWellComponent } from './common/collapsible-well.component'
+import { NavBarComponent } from './nav/navbar.component'
+import { Error404Component } from './errors/404.component'
+import { appRoutes } from './routes'
+import { AuthService } from './user/auth.service'
 
-import { EventsAppComponent } from './events-app.component';
-import { NavBarComponent } from "./nav/navbar.component";
-import { ToastrService } from "./common/toastr.service";
-import { CollapsibleWellComponent } from "./common/collapsible-well.component";
-import { appRoutes } from './routes';
-import { Error404Component } from "./errors/404.component";
-import { CreateSessionComponent } from "./events/event-details/create-session.component";
+declare let toastr: Toastr
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
-        ],
-    exports: [],
+        RouterModule.forRoot(appRoutes)],
     declarations: [
         EventsAppComponent,
         EventsListComponent,
@@ -40,24 +38,28 @@ import { CreateSessionComponent } from "./events/event-details/create-session.co
         NavBarComponent,
         EventDetailsComponent,
         CreateEventComponent,
-        Error404Component,
         CreateSessionComponent,
+        Error404Component,
         SessionListComponent,
         CollapsibleWellComponent,
-        DurationPipe
-        ],
+        DurationPipe],
     providers: [
-        EventService, ToastrService, EventListResolver, EventRouteActivator,
+        EventService,
+        { provide: TOASTR_TOKEN, useValue: toastr },
+        EventRouteActivator,
         EventListResolver,
-        { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-        AuthService
-        ],
+        AuthService,
+        {
+            provide: 'canDeactivateCreateEvent',
+            useValue: checkDirtyState
+        }],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
 
-function checkDirtyState(component:CreateEventComponent) {
-  if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
-  return true
+function checkDirtyState(component: CreateEventComponent) {
+    if (component.isDirty)
+        return window.confirm('You have not saved this event, Do you really want to cancel?')
+
+    return true
 }
