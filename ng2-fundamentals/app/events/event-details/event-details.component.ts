@@ -12,12 +12,14 @@ import { IEvent, ISession } from '../shared/index'
   `]
 })
 export class EventDetailsComponent {
-  event:IEvent
-  addMode:boolean
+  event: IEvent
+  addMode: boolean
+  filterBy: string = 'all';
+  //sortBy: string = 'votes';
 
-  constructor(private eventService:EventService, private route:ActivatedRoute) {
+  constructor(private eventService: EventService, private route: ActivatedRoute) {
   }
-  
+
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
   }
@@ -26,7 +28,7 @@ export class EventDetailsComponent {
     this.addMode = true
   }
 
-  saveNewSession(session:ISession) {
+  saveNewSession(session: ISession) {
     const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
     session.id = nextId + 1
     this.event.sessions.push(session)
