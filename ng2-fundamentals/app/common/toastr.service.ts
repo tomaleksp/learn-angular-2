@@ -8,3 +8,5 @@ export interface Toastr {
   warning (msg: string, title?: string): void;
   error (msg: string, title?: string): void;
 }
+
+
