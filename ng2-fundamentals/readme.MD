@@ -17,3 +17,11 @@ Follow along with the course linked above. To start the server:
 npm install
 npm start
 ```
+
+Testing
+---------------
+```
+npm i -g karma@1.0.18
+npm i karma@1.3.0 karma-chrome-launcher@2.0.0 karma-jasmine@1.0.2 jasmine-core@2.5.2 @types/jasmine@2.5.38 -D
+
+```
