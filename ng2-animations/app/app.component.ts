@@ -1,11 +1,12 @@
-import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
+import { Component, ChangeDetectorRef, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 
 @Component({
     selector: 'my-app',
     template: `<button (click)='toggleState()'>My Button</button>
                 <ul>
-                    <li *ngFor="let item of items" [@myTrigger]='state'>{{ item }}</li>
+                    <li *ngFor="let item of items" [@myTrigger]='state' (@myTrigger.start)="animStart($event)" (@myTrigger.done)="animDone($event)">{{ item }}</li>
                 </ul>
+                {{ animDetails }}
     `,
     styles: [`
         ul { list-style-type:none; margin: 30px 30px 0 0; padding: 0; }
@@ -56,11 +57,26 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
 })
 export class AppComponent {
     state: string = 'fadeIn';
-    items: any[] = ['item1', 'item2', 'item2', 'item3'];
+    items = new Array();
+    animDetails: string = 'Waiting';
+
+    constructor(private cdRef: ChangeDetectorRef) {
+    }
 
     toggleState() {
         //this.state = (this.state === 'small' ? 'large' : 'small');
+
         this.items.push('another item');
-        this.state = 'fadeIn';
+        this.state = "fadeIn";
+    }
+
+    animStart(event: any) {
+        console.log('Animation Started!');
+        console.log(event);
+    }
+
+    animDone(event: any) {
+        this.animDetails = 'It took me ' + event.totalTime + 'ms to complete.';
+        this.cdRef.detectChanges();
     }
 }
