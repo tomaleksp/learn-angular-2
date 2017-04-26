@@ -29,11 +29,15 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
                 transform: 'scale(2)'
             })),
             state('fadeIn', style({
-                opacity: '1'
+                opacity: '1',
+                transform: 'scale(1.2)'
             })),
             transition('void => *', [
-                style({ opacity: '0', transform: 'translateY(20px)' }),
-                animate('750ms 0s ease-out')
+                animate(750, keyframes([
+                    style({ opacity: 0, transform: 'translateY(-30px)', offset: 0 }),
+                    style({ opacity: 1, transform: 'translateY(5px) scale(1.2)', offset: .3 }),
+                    style({ opacity: 1, transform: 'translateY(0) scale(1.2)', offset: 1 })
+                ]))
             ])
             // one way
             // transition('small => large', animate('500ms')),
@@ -47,8 +51,6 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
 
             // transition('* => small', animate('500ms'))
             // transition('* => *', animate('500ms'))
-
-
         ])
     ]
 })
