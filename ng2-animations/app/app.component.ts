@@ -7,9 +7,18 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
                     <li *ngFor="let item of items" [@myTrigger]='state'>{{ item }}</li>
                 </ul>
     `,
-    styles: [],
+    styles: [`
+        ul { list-style-type:none; margin: 30px 30px 0 0; padding: 0; }
+        li {
+            padding:15px;
+            width:100%;
+            background:#f1f1f1;
+            margin-bottom:2px;
+            font-weight:bold;
+        }
+    `],
     animations: [
-        trigger('myTrigger',[
+        trigger('myTrigger', [
             state('small', style({
                 transform: 'scale(1)'
             })),
@@ -24,7 +33,7 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
             })),
             transition('void => *', [
                 style({ opacity: '0', transform: 'translateY(20px)' }),
-                animate('500ms')
+                animate('750ms 0s ease-out')
             ])
             // one way
             // transition('small => large', animate('500ms')),
@@ -45,11 +54,11 @@ import { Component, trigger, state, style, transition, animate, keyframes } from
 })
 export class AppComponent {
     state: string = 'fadeIn';
-    items: any[] = ['item1','item2','item2','item3'];
+    items: any[] = ['item1', 'item2', 'item2', 'item3'];
 
-    toggleState(){
+    toggleState() {
         //this.state = (this.state === 'small' ? 'large' : 'small');
         this.items.push('another item');
         this.state = 'fadeIn';
     }
- }
+}
